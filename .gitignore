@@ -1,0 +1,4 @@
+*.dat
+.direnv
+__pycache__
+*.log
