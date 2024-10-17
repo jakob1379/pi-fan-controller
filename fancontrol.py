@@ -70,17 +70,19 @@ def main(
     while True:
         temp = get_temp()
         fan_state = 'on' if fan.value else 'off'
-        logging.info(f"Temperature: {temp:.2f}C\tFan: {fan_state}")
+        logging.debug(f"Temperature: {temp:.2f}C\tFan: {fan_state}")
 
         if data_dump:
             append_new_line(data_dump, f"{datetime.now()}\t{temp}\t{fan.value}\t{on_threshold}\t{off_threshold}", header=header)
 
         # Start the fan if the temperature has reached the limit and the fan isn't already running.
         if temp > on_threshold and not fan.value:
+            logging.info(f"Turning fan on - Temperature: {temp:.2f}C > {on_threshold}C")
             fan.on()
 
         # Stop the fan if the fan is running and the temperature has dropped to 10 degrees below the limit.
         elif fan.value and temp < off_threshold:
+            logging.info(f"Turning fan off - Temperature: {temp:.2f}C < {off_threshold}C")
             fan.off()
 
         time.sleep(sleep_interval)
