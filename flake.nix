@@ -5,9 +5,9 @@
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ uv python312 gitleaks ];
+          buildInputs = with pkgs; [ uv python313 gitleaks ];
           shellHook = ''
-            export UV_PYTHON=${pkgs.python312}
+            export UV_PYTHON=${pkgs.python313}
             uv venv
           '';
         };
