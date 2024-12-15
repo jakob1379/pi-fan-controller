@@ -1,0 +1,1 @@
+from .fancontrol import app
