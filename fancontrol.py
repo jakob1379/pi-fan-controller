@@ -4,9 +4,9 @@ from datetime import datetime
 from typing import Optional
 from gpiozero import OutputDevice
 from typer import Option, Typer
-from fancy_logging import setup_logging
 import os
 from pathlib import Path
+from sane_rich_logging import setup_logging
 
 setup_logging()
 
