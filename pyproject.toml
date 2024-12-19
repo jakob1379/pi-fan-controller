@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-pi-fan-controller = "pi_fan_controller:app"
+pi-fan = "pi_fan_controller:app"
 
 [build-system]
 requires = ["hatchling"]

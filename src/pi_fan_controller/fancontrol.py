@@ -54,7 +54,8 @@ Description=Fan Control Service
 After=network.target
 
 [Service]
-ExecStart={Path(__file__).absolute()} main
+# ExecStart={Path(__file__).absolute()} monitor
+ExecStart=pi-fan monitor
 Restart=always
 
 [Install]
@@ -76,7 +77,7 @@ WantedBy=default.target
 
     
 @app.command()
-def main(
+def monitor(
     on_threshold: Optional[float] = Option(60, "-on", "--on-threshold", help="The temperature threshold (in degrees Celsius) at which to turn the fan on."),
     off_threshold: Optional[float] = Option(50, "-off", "--off-threshold", help="The temperature threshold (in degrees Celsius) at which to turn the fan off."),
     sleep_interval: Optional[int] = Option(10, "-s", "--sleep-interval", help="The interval (in seconds) at which to check the temperature."),
@@ -90,7 +91,8 @@ def main(
     if not quiet:
         logging.getLogger().setLevel(logging.INFO)
     else:
-        logging.getLogger().setLevel(logging.WARNING)
+        print("ENABLE DEBUG")
+        logging.getLogger().setLevel(logging.DEBUG)
 
     # Validate the on and off thresholds
     if off_threshold >= on_threshold:
