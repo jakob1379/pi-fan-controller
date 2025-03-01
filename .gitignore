@@ -5,3 +5,4 @@ __pycache__
 /flake.lock
 uv.lock
 *~
+/.envrc
