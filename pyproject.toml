@@ -24,6 +24,8 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "commitizen>=4.4.1",
+    "poethepoet>=0.33.0",
     "pre-commit>=4.0.1",
     "python-language-server>=0.36.2",
     "ruff>=0.6.9",
@@ -50,3 +52,11 @@ src = ["src"]
 select = ["E", "F", "I", "B", "A", "UP"]  # E: pycodestyle, F: pyflakes, I: import, B: flake8-bugbear, A: flake8-annotations
 extend-select = ["B", "A"]  # Additional rules to enable (like flake8-bugbear or annotations)
 ignore = [ "B008" ]  # Ignore "trailing whitespace" and "function call in argument defaults"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "pep440"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true

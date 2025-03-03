@@ -11,7 +11,7 @@ A command-line tool to monitor your Raspberry Pi’s core temperature and contro
 - **GPIO Control:** Uses [gpiozero](https://gpiozero.readthedocs.io/) to control the fan via a specified GPIO pin.
 
 ## Installation
-     
+
 ```bash
 uv tool install pi-fan-controller
 pipx install pi-fan-controller
@@ -86,14 +86,13 @@ This project was inspired by the [Howchoo Pi Fan Controller][howchoo-repo]. Whil
 
 ## References
 
-- **Fan Control with Python:** A detailed guide on controlling a Raspberry Pi fan using Python.  
+- **Fan Control with Python:** A detailed guide on controlling a Raspberry Pi fan using Python.
   [Control Your Raspberry Pi Fan (and Temperature) with Python](https://howchoo.com/g/ote2mjkzzta/control-raspberry-pi-fan-temperature-python) citeturn0search0
-- **Instructables Tutorial:** An example project for controlling a cooling fan on a Raspberry Pi.  
+- **Instructables Tutorial:** An example project for controlling a cooling fan on a Raspberry Pi.
   [Control a Cooling Fan on a Raspberry Pi 3](https://www.instructables.com/Control-a-Cooling-Fan-on-a-Raspberry-Pi-3/) citeturn0search6
-- **Silent Fan on Raspberry Pi 4:** Insights on achieving fine-grained PWM control for a silent operation.  
+- **Silent Fan on Raspberry Pi 4:** Insights on achieving fine-grained PWM control for a silent operation.
   [Add a Silent Fan to your Raspberry Pi 4](https://medium.com/home-wireless/add-a-silent-fan-to-your-raspberry-pi-4-e63ec64f8115) citeturn0search7
 
 ## License
 
 [MIT License](LICENSE)
-
