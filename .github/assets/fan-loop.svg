@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 392" width="900" height="392" role="img" aria-labelledby="t d">
+<title id="t">pi-fan monitor: temperature readings switching a fan on GPIO 17</title>
+<desc id="d">A Raspberry Pi core temperature trace sampled every 10 seconds. When a reading passes 60 °C, GPIO 17 goes high and the fan spins. The fan stays on while the temperature falls through the 50 to 60 °C band, and switches off only when a reading drops below 50 °C. The matching log lines appear underneath.</desc>
+<defs>
+<style>
+:root{--bg:#eaf0f2;--panel:#dde6ea;--ink:#1d2b33;--muted:#5d6f79;--rule:#b9c7ce;--band:#d6e1e6;--hot:#c8323c;--cool:#2c78b0;--fan:#33444e;--frame:#c4d1d7}
+@media (prefers-color-scheme:dark){:root{--bg:#13202a;--panel:#192a36;--ink:#e3ecef;--muted:#8fa3ad;--rule:#33495a;--band:#1a2d3a;--hot:#ff6b5e;--cool:#5db0e6;--fan:#c9d6dc;--frame:#2a3f4d}}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:var(--ink)}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+.mu{fill:var(--muted)}
+.s{font-size:12px}.n{font-size:13px}
+.hs{stop-color:var(--hot)}.ms{stop-color:var(--muted)}.cs{stop-color:var(--cool)}
+.rule{stroke:var(--rule);stroke-width:1.5;stroke-dasharray:5 5;fill:none}
+.wire{fill:none;stroke:var(--rule);stroke-width:2;stroke-linecap:round}
+.live{stroke:var(--hot);opacity:0}
+.cover{fill:var(--bg)}
+.ph{stroke:var(--muted);stroke-width:1;opacity:.6}
+.dot{fill:var(--bg);stroke:var(--ink);stroke-width:2.5}
+.blades{fill:var(--fan);transform-origin:760px 140px}
+.st-on,.l-on,.l-off{opacity:0}
+.anim .cover,.anim .ph{animation:sweep 14s linear infinite}
+.anim .dot{animation:follow 14s linear infinite}
+.anim .data{animation:fade 14s linear infinite}
+.anim .blades{animation:spin 14s infinite}
+.anim .st-off{animation:off 14s linear infinite}
+.anim .st-on,.anim .live{animation:on 14s linear infinite}
+.anim .l-on{animation:log-on 14s linear infinite}
+.anim .l-off{animation:log-off 14s linear infinite}
+@keyframes sweep{0%{transform:translateX(0)}86.0%,100%{transform:translateX(460px)}}
+@keyframes follow{0%{transform:translate(120px,172.2px)}3.44%{transform:translate(138.4px,162.85px)}6.88%{transform:translate(156.8px,152.65px)}10.32%{transform:translate(175.2px,145px)}13.76%{transform:translate(193.6px,133.1px)}17.2%{transform:translate(212px,126.3px)}20.64%{transform:translate(230.4px,115.25px)}24.08%{transform:translate(248.8px,108.45px)}27.52%{transform:translate(267.2px,97.4px)}30.96%{transform:translate(285.6px,90.6px)}34.4%{transform:translate(304px,86.35px)}37.84%{transform:translate(322.4px,92.3px)}41.28%{transform:translate(340.8px,104.2px)}44.72%{transform:translate(359.2px,118.65px)}48.16%{transform:translate(377.6px,130.55px)}51.6%{transform:translate(396px,143.3px)}55.04%{transform:translate(414.4px,153.5px)}58.48%{transform:translate(432.8px,163.7px)}61.92%{transform:translate(451.2px,173.05px)}65.36%{transform:translate(469.6px,182.4px)}68.8%{transform:translate(488px,192.6px)}72.24%{transform:translate(506.4px,195.15px)}75.68%{transform:translate(524.8px,190.9px)}79.12%{transform:translate(543.2px,184.95px)}82.56%{transform:translate(561.6px,179px)}86%{transform:translate(580px,173.9px)}86.0%,100%{transform:translate(580px,173.9px)}}
+@keyframes fade{0%,92%{opacity:1}97%,100%{opacity:0}}
+@keyframes spin{0%,27.52%{transform:rotate(0);animation-timing-function:ease-in}33.02%{transform:rotate(360deg);animation-timing-function:linear}68.8%{transform:rotate(4680deg);animation-timing-function:ease-out}79.8%,100%{transform:rotate(5400deg)}}
+@keyframes on{0%,27.51%{opacity:0}27.52%,68.79%{opacity:1}68.8%,100%{opacity:0}}
+@keyframes off{0%,27.51%{opacity:1}27.52%,68.79%{opacity:0}68.8%,100%{opacity:1}}
+@keyframes log-on{0%,27.51%{opacity:0}27.52%,92%{opacity:1}97%,100%{opacity:0}}
+@keyframes log-off{0%,68.79%{opacity:0}68.8%,92%{opacity:1}97%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+.anim .cover,.anim .ph,.anim .dot{display:none}
+.anim *{animation:none!important}
+.anim .l-on,.anim .l-off{opacity:1}
+.anim .st-off,.anim .st-on{opacity:0}
+}
+</style>
+<linearGradient id="heat" gradientUnits="userSpaceOnUse" x1="0" y1="102.5" x2="0" y2="187.5">
+<stop offset="0" class="hs"/><stop offset=".5" class="ms"/><stop offset="1" class="cs"/>
+</linearGradient>
+</defs>
+<rect width="900" height="392" rx="16" fill="var(--bg)"/>
+<g class="anim">
+<text x="40" y="38" class="m s mu">/sys/class/thermal/thermal_zone0/temp</text>
+<text x="580" y="38" class="s mu" text-anchor="end">read every 10 s</text>
+<g class="data">
+<polyline points="120,172.2 138.4,162.85 156.8,152.65 175.2,145 193.6,133.1 212,126.3 230.4,115.25 248.8,108.45 267.2,97.4 285.6,90.6 304,86.35 322.4,92.3 340.8,104.2 359.2,118.65 377.6,130.55 396,143.3 414.4,153.5 432.8,163.7 451.2,173.05 469.6,182.4 488,192.6 506.4,195.15 524.8,190.9 543.2,184.95 561.6,179 580,173.9" fill="none" stroke="url(#heat)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<g fill="url(#heat)"><circle cx="120" cy="172.2" r="2.6"/><circle cx="138.4" cy="162.85" r="2.6"/><circle cx="156.8" cy="152.65" r="2.6"/><circle cx="175.2" cy="145" r="2.6"/><circle cx="193.6" cy="133.1" r="2.6"/><circle cx="212" cy="126.3" r="2.6"/><circle cx="230.4" cy="115.25" r="2.6"/><circle cx="248.8" cy="108.45" r="2.6"/><circle cx="267.2" cy="97.4" r="2.6"/><circle cx="285.6" cy="90.6" r="2.6"/><circle cx="304" cy="86.35" r="2.6"/><circle cx="322.4" cy="92.3" r="2.6"/><circle cx="340.8" cy="104.2" r="2.6"/><circle cx="359.2" cy="118.65" r="2.6"/><circle cx="377.6" cy="130.55" r="2.6"/><circle cx="396" cy="143.3" r="2.6"/><circle cx="414.4" cy="153.5" r="2.6"/><circle cx="432.8" cy="163.7" r="2.6"/><circle cx="451.2" cy="173.05" r="2.6"/><circle cx="469.6" cy="182.4" r="2.6"/><circle cx="488" cy="192.6" r="2.6"/><circle cx="506.4" cy="195.15" r="2.6"/><circle cx="524.8" cy="190.9" r="2.6"/><circle cx="543.2" cy="184.95" r="2.6"/><circle cx="561.6" cy="179" r="2.6"/><circle cx="580" cy="173.9" r="2.6"/></g>
+<path d="M120,278H267.2V254H488V278H580" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>
+<rect class="cover" x="116" y="56" width="472" height="230"/>
+</g>
+<rect x="120" y="102.5" width="460" height="85" fill="var(--ink)" fill-opacity=".07"/>
+<path class="rule" d="M120,102.5H580"/>
+<path class="rule" d="M120,187.5H580"/>
+<text x="572" y="120.5" class="s mu" text-anchor="end">fan keeps its state</text>
+<text x="108" y="106.5" class="m n" text-anchor="end">on 60°C</text>
+<text x="108" y="191.5" class="m n" text-anchor="end">off 50°C</text>
+<text x="108" y="270" class="m n" text-anchor="end">GPIO 17</text>
+<text x="124" y="249" class="s mu">high</text>
+<path class="ph" d="M120,56V286"/>
+<circle class="dot" r="5" transform="translate(120 172.2)"/>
+<path class="wire" d="M588,278H724Q760,278 760,242V220"/>
+<path class="wire live" d="M588,278H724Q760,278 760,242V220"/>
+<rect x="680" y="60" width="160" height="160" rx="22" fill="var(--frame)"/>
+<circle cx="760" cy="140" r="70" fill="var(--bg)"/>
+<g fill="var(--bg)"><circle cx="694" cy="74" r="6"/><circle cx="826" cy="74" r="6"/><circle cx="694" cy="206" r="6"/><circle cx="826" cy="206" r="6"/></g>
+<g class="blades"><g transform="translate(760 140)"><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(0.0)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(51.43)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(102.86)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(154.29)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(205.71)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(257.14)"/><path d="M0,-14C10,-26 26,-40 22,-60C14,-62 4,-58 -4,-48C-8,-36 -6,-24 0,-14Z" transform="rotate(308.57)"/><circle r="16"/></g></g>
+<circle cx="760" cy="140" r="6" fill="var(--frame)"/>
+<text x="772" y="272" class="n st-off mu">fan off</text>
+<text x="772" y="272" class="n st-on" fill="var(--hot)" style="fill:var(--hot)">fan on</text>
+<rect x="40" y="300" width="820" height="72" rx="10" fill="var(--panel)"/>
+<text x="58" y="324" class="m n mu">$ pi-fan monitor</text>
+<text x="58" y="344" class="m n l-on">Turning fan on - Temperature: 60.60C &gt; 60.0C</text>
+<text x="58" y="362" class="m n l-off">Turning fan off - Temperature: 49.40C &lt; 50.0C</text>
+</g>
+</svg>
